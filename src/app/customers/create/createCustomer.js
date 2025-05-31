@@ -35,8 +35,19 @@ const createCustomer = async (formData) => {
 
   
   if (!res.ok) {
+    //ステータスコードとレスポンス本文をログに出力
+    let errorText;
+    try {
+      errorText = await res.text();
+    } catch (e) {
+      errorText = `<failed to read error text: ${e}>`;
+    }
+    console.error(
+      `>>> createCustomer: error status = ${res.status}, response = ${errorText}`
+    );
     throw new Error("Failed to create customer");
   }
+  //-ここまで-
 
   revalidatePath(`/customers`);
 };
