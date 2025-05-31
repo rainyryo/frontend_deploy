@@ -10,8 +10,13 @@ async function fetchCustomer(id) {
   return res.json();
 }
 
-export default async function ReadPage({ query }) {
-  const { id } = query;
+// ここを { query } → { searchParams } に変更
+export default async function ReadPage({ searchParams }) {
+  // searchParams.id でクエリパラメータの id を参照
+  const { id } = SearchParams.id;
+  if (!id) {
+    return <div className="alert alert-error">Customer IDが指定されていません</div>;
+  }
   const customerInfo = await fetchCustomer(id);
 
   return (
