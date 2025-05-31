@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function ConfirmPage() {
+function ConfirmPage() {
   const router = useRouter();
   const customer_id = useSearchParams().get("customer_id");
   const [customer, setCustomer] = useState(null);
@@ -16,7 +16,7 @@ export default function ConfirmPage() {
       setCustomer(customerData);
     };
     fetchAndSetCustomer();
-  }, []);
+  }, [customer_id]); // customer_id　に依存するように配列に追加
 
   return (
     <>
@@ -30,5 +30,14 @@ export default function ConfirmPage() {
         </button>
       </div>
     </>
+  );
+}
+
+/* ─── 外側のデフォルトエクスポートで Suspense でくるむ ─── */
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ConfirmPage />
+    </Suspense>
   );
 }
