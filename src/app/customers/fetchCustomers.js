@@ -4,7 +4,7 @@ export default async function fetchCustomers() {
 
 const fullUrl = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/allcustomers`;
 console.log(">>> fetch URL =", fullUrl);
-//ここまで
+//ここまでだよ
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_ENDPOINT}/allcustomers`,
