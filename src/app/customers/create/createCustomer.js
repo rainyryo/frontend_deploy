@@ -20,17 +20,17 @@ const createCustomer = async (formData) => {
   const fullUrl = `${process.env.NEXT_PUBLIC_API_ENDPOINT}/customers`;
   console.log(">>> createCustomer: fetch URL =", fullUrl);
 
-  const res = await fetch(fullUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: body_msg,
-  });
-
-//  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/customers`, {
+//  const res = await fetch(fullUrl, {
 //    method: "POST",
 //    headers: { "Content-Type": "application/json" },
 //    body: body_msg,
 //  });
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/customers`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: body_msg,
+  });
 
 
   
