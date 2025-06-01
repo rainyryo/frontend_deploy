@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic"; // これを追加して、動的なページにする
 import OneCustomerInfoCard from "@/app/components/one_customer_info_card.jsx";
 
 async function fetchCustomer(id) {
